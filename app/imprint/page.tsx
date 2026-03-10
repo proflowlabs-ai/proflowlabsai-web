@@ -32,8 +32,8 @@ export default function ImprintPage() {
         
         <div className="space-y-1 pt-2 border-t text-sm">
           <p className="font-semibold text-foreground">Contact Information:</p>
-          <p>Email: <a href="mailto:legal@proflowlabs.ai" className="text-primary hover:underline font-medium">legal@proflowlabs.ai</a></p>
-          <p>Website: <Link href="https://proflowlabs.ai" className="text-primary hover:underline font-medium">https://proflowlabs.ai</Link></p>
+          <p>Email: <a href="mailto:legal@proflowlabsai.com" className="text-primary hover:underline font-medium">legal@proflowlabsai.com</a></p>
+          <p>Website: <Link href="https://proflowlabsai.com" className="text-primary hover:underline font-medium">https://proflowlabsai.com</Link></p>
         </div>
       </div>
 

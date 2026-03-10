@@ -17,13 +17,13 @@ export default function PrivacyPage() {
       </p>
 
       <ul>
-        <li>Visit our website at <Link href="https://proflowlabs.ai" className="text-primary hover:underline">https://proflowlabs.ai</Link></li>
+        <li>Visit our website at <Link href="https://proflowlabsai.com" className="text-primary hover:underline">https://proflowlabsai.com</Link></li>
         <li>Use the ProFlowLabs AI clinical documentation platform</li>
         <li>Engage with us in other related ways, including any sales, marketing, or events</li>
       </ul>
 
       <p>
-        <strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <strong>legal@proflowlabs.ai</strong>.
+        <strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <strong>legal@proflowlabsai.com</strong>.
       </p>
 
       <hr />
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
 
       <h2>4. Data Subject Rights</h2>
       <p>
-        Depending on your location, you have rights to access, correct, delete, or restrict how we process your data. Contact us at <strong>legal@proflowlabs.ai</strong> to exercise your rights.
+        Depending on your location, you have rights to access, correct, delete, or restrict how we process your data. Contact us at <strong>legal@proflowlabsai.com</strong> to exercise your rights.
       </p>
 
       <hr />
