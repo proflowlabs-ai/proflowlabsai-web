@@ -70,9 +70,21 @@ const processSteps = [
 ];
 
 const proofItems = [
-  { metric: "37%", label: "faster lead response time", detail: "B2B services client in first 30 days" },
-  { metric: "2.4x", label: "qualified meetings booked", detail: "signal-based outreach system" },
-  { metric: "18h/week", label: "manual work removed", detail: "ops automation across delivery + reporting" },
+  {
+    metric: "Example outcome",
+    label: "Faster lead-response workflows",
+    detail: "Past B2B service projects often improved response speed after rollout; results vary by team and baseline.",
+  },
+  {
+    metric: "Typical pattern",
+    label: "Higher quality conversations",
+    detail: "Anonymized outreach systems have helped teams create steadier meeting flow with better-fit prospects.",
+  },
+  {
+    metric: "Operational lift",
+    label: "Less manual coordination",
+    detail: "Delivery and reporting automations frequently reduce repetitive admin load across core processes.",
+  },
 ];
 
 const packages = [
@@ -292,6 +304,10 @@ export default function Home() {
 
         <section className="reveal space-y-8">
           <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Selected work</h2>
+          <p className="max-w-3xl text-sm leading-relaxed text-slate-300">
+            Example outcomes from past project highlights (anonymized). They illustrate what&apos;s possible with the
+            right inputs and execution quality—results vary by context.
+          </p>
           <div className="grid gap-4 md:grid-cols-3">
             {proofItems.map((item, index) => (
               <article
@@ -381,7 +397,11 @@ export default function Home() {
 
         <footer className="reveal flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} ProFlowLabsAI</p>
-          <p>AI automation systems for sales, marketing, and operations.</p>
+          <div className="flex flex-wrap items-center gap-4 sm:justify-end">
+            <p>AI automation systems for sales, marketing, and operations.</p>
+            <a href="/imprint" className="transition hover:text-slate-200">Imprint</a>
+            <a href="/privacy" className="transition hover:text-slate-200">Privacy</a>
+          </div>
         </footer>
       </div>
     </main>
