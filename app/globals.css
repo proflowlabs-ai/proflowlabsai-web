@@ -348,6 +348,60 @@ html[data-theme="light"] .trust-pill {
   font-size: 1rem;
 }
 
+.legal-page {
+  max-width: 52rem;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.legal-page h1,
+.legal-page h2 {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.legal-page h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+}
+
+.legal-page h2 {
+  margin: 2rem 0 0.8rem;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+}
+
+.legal-page p,
+.legal-page ul,
+.legal-page address,
+.legal-page hr {
+  margin: 0 0 1rem;
+}
+
+.legal-page ul {
+  padding-left: 1.35rem;
+}
+
+.legal-page li {
+  margin: 0.3rem 0;
+}
+
+.legal-page a {
+  color: var(--accent-strong);
+  text-underline-offset: 0.14em;
+}
+
+.legal-page address {
+  font-style: normal;
+}
+
+.legal-page hr {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--surface-border) 88%, transparent);
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
