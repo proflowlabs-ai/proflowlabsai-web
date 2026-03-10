@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import LegalPageShell from '../components/legal-page-shell'
 
 export const metadata: Metadata = {
   title: 'Imprint | ProFlowLabs AI',
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
 
 export default function ImprintPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] px-6 py-12 text-[var(--foreground)] md:px-10">
-      <div className="legal-page">
+    <LegalPageShell>
       <h1>Imprint</h1>
       <p>Last updated: August 24, 2025</p>
 
@@ -57,7 +57,6 @@ export default function ImprintPage() {
       <p>
         We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.
       </p>
-      </div>
-    </main>
+    </LegalPageShell>
   )
 }

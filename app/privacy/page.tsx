@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import LegalPageShell from '../components/legal-page-shell'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | ProFlowLabs AI',
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] px-6 py-12 text-[var(--foreground)] md:px-10">
-      <div className="legal-page">
+    <LegalPageShell>
       <h1>Privacy Policy</h1>
       <p>Last updated August 23, 2025</p>
 
@@ -81,7 +81,6 @@ export default function PrivacyPage() {
         HR Online Consulting LLC<br />
         550 Kings Mountain, Kings Mountain, NC 28086, United States
       </address>
-      </div>
-    </main>
+    </LegalPageShell>
   )
 }
