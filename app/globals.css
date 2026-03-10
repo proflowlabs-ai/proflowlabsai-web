@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #04070d;
-  --foreground: #f8fbff;
+  --background: #06080f;
+  --foreground: #eff5ff;
+  --font-display: var(--font-syne);
+  --font-body: var(--font-manrope);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
 }
 
 * {
@@ -17,35 +19,188 @@
 
 body {
   margin: 0;
-  background: var(--background);
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% -10%, #1f335e 0%, transparent 42%),
+    radial-gradient(circle at 90% 0%, #19485b 0%, transparent 36%), var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Segoe UI", system-ui, sans-serif;
+  font-family: var(--font-body), "Segoe UI", system-ui, sans-serif;
 }
 
-.hero-grid {
-  background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+.font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-body), "Segoe UI", system-ui, sans-serif;
+}
+
+.tech-grid {
+  background-image: linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at top, black 30%, transparent 82%);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at top, black 34%, transparent 86%);
 }
 
-.float-card {
-  animation: drift 8s ease-in-out infinite;
+.aurora {
+  pointer-events: none;
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 42rem;
+  background: conic-gradient(from 210deg at 48% 42%, rgba(73, 198, 255, 0.28), rgba(74, 84, 255, 0.2), rgba(106, 248, 220, 0.22), rgba(73, 198, 255, 0.28));
+  filter: blur(72px);
+  opacity: 0.55;
+  animation: auroraShift 14s ease-in-out infinite alternate;
 }
 
-@keyframes drift {
-  0%,
-  100% {
+.grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0.6px, transparent 0.7px);
+  background-size: 4px 4px;
+  mix-blend-mode: soft-light;
+}
+
+.glass-panel {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(12px);
+}
+
+.card-hover {
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), border-color 260ms ease, background-color 260ms ease,
+    box-shadow 360ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(145, 243, 255, 0.56);
+  box-shadow: 0 24px 56px rgba(10, 22, 56, 0.45);
+}
+
+.hero-item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: riseIn 0.78s cubic-bezier(0.2, 0.95, 0.3, 1) forwards;
+}
+
+.hero-item:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.hero-item:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.hero-item:nth-child(3) {
+  animation-delay: 280ms;
+}
+
+.hero-item:nth-child(4) {
+  animation-delay: 390ms;
+}
+
+.hero-item:nth-child(5) {
+  animation-delay: 520ms;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms cubic-bezier(0.2, 0.95, 0.3, 1), transform 700ms cubic-bezier(0.2, 0.95, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pill-button,
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  font-weight: 600;
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 260ms ease;
+}
+
+.pill-button {
+  border: 1px solid rgba(145, 243, 255, 0.34);
+  padding: 0.55rem 1rem;
+  background: rgba(76, 149, 255, 0.1);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #7fd4ff, #9efce4);
+  color: #051021;
+  padding: 0.8rem 1.4rem;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(127, 212, 255, 0.28);
+}
+
+.secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eaf5ff;
+  padding: 0.8rem 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.secondary-button:hover,
+.pill-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(145, 243, 255, 0.72);
+  background: rgba(121, 212, 255, 0.14);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-8px);
+}
+
+@keyframes auroraShift {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateY(-24px) rotate(8deg) scale(1.08);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-card {
+  .aurora,
+  .hero-item,
+  .reveal {
     animation: none;
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .card-hover,
+  .pill-button,
+  .primary-button,
+  .secondary-button {
+    transition: none;
+  }
+
+  .card-hover:hover,
+  .pill-button:hover,
+  .primary-button:hover,
+  .secondary-button:hover {
+    transform: none;
+    box-shadow: none;
   }
 }

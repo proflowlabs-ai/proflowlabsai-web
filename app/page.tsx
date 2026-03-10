@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect } from "react";
+
 const logos = ["SaaS", "Ecommerce", "B2B Services", "Education", "Healthcare", "Finance"];
 
 const icpItems = [
@@ -116,118 +120,129 @@ const faqs = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    elements.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#04070d] text-slate-100">
-      <div className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
-      <div className="pointer-events-none absolute -top-48 left-1/2 h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[130px]" />
-      <div className="pointer-events-none absolute right-0 top-72 h-72 w-72 rounded-full bg-blue-500/10 blur-[120px]" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
+      <div className="aurora" />
+      <div className="grain" />
+      <div className="pointer-events-none absolute inset-0 tech-grid opacity-60" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-16 pt-10 md:px-10 md:pt-14">
-        <header className="flex items-center justify-between border-b border-white/10 pb-5">
-          <div className="text-sm tracking-[0.24em] text-slate-300">PROFLOWLABSAI</div>
-          <a
-            href="mailto:hello@proflowlabsai.com"
-            className="rounded-full border border-cyan-300/40 px-4 py-2 text-xs font-medium text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/10"
-          >
+        <header className="hero-item flex items-center justify-between border-b border-white/12 pb-5">
+          <div className="font-body text-sm tracking-[0.24em] text-slate-300">PROFLOWLABSAI</div>
+          <a href="mailto:hello@proflowlabsai.com" className="pill-button text-xs text-slate-100">
             Book a call
           </a>
         </header>
 
-        <section className="relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+        <section className="grid gap-10 lg:grid-cols-[1.16fr_0.84fr] lg:items-end">
           <div className="space-y-8">
-            <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-cyan-100/90">
+            <span className="hero-item inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-cyan-100/90">
               AI Automation Agency
             </span>
-            <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
-              We build AI systems that help growth-stage teams close more deals with less manual work.
+            <h1 className="hero-item font-display max-w-4xl text-balance text-5xl leading-[0.95] tracking-[-0.03em] text-white md:text-7xl">
+              AI Systems That Compound Revenue.
             </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
-              For B2B founders and operators, we design and deploy practical automation workflows across
-              outreach, content, and operations—so execution gets faster and revenue becomes more predictable.
+            <p className="hero-item max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
+              For B2B founders and operators, we design and deploy practical automation workflows across outreach,
+              content, and operations—so execution gets faster and revenue becomes more predictable.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="mailto:hello@proflowlabsai.com"
-                className="rounded-xl bg-cyan-300 px-6 py-3 font-medium text-slate-950 transition hover:bg-cyan-200"
-              >
+            <div className="hero-item flex flex-wrap gap-4">
+              <a href="mailto:hello@proflowlabsai.com" className="primary-button">
                 Book strategy call
               </a>
-              <a
-                href="#systems"
-                className="rounded-xl border border-white/20 px-6 py-3 font-medium text-slate-100 transition hover:border-cyan-200/70 hover:bg-white/5"
-              >
+              <a href="#systems" className="secondary-button">
                 See example systems
               </a>
             </div>
           </div>
 
-          <div className="float-card rounded-2xl border border-white/15 bg-white/[0.03] p-6 backdrop-blur-xl">
+          <div className="hero-item glass-panel card-hover p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-100/80">Typical outcomes</p>
             <div className="mt-5 space-y-4">
               <div>
-                <p className="text-3xl font-semibold text-white">More meetings</p>
+                <p className="font-display text-3xl text-white">More meetings</p>
                 <p className="text-sm text-slate-300">Better targeting + faster outreach loops.</p>
               </div>
               <div>
-                <p className="text-3xl font-semibold text-white">Faster execution</p>
+                <p className="font-display text-3xl text-white">Faster execution</p>
                 <p className="text-sm text-slate-300">Systems replacing repetitive tasks across teams.</p>
               </div>
               <div>
-                <p className="text-3xl font-semibold text-white">Clear visibility</p>
+                <p className="font-display text-3xl text-white">Clear visibility</p>
                 <p className="text-sm text-slate-300">Automations tied to measurable business outcomes.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+        <section className="reveal rounded-2xl border border-white/10 bg-white/[0.02] p-6">
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Trusted by teams in</p>
           <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-300 md:grid-cols-6">
             {logos.map((logo) => (
-              <div key={logo} className="rounded-lg border border-white/10 bg-black/20 px-4 py-3 text-center">
+              <div key={logo} className="card-hover rounded-lg border border-white/10 bg-black/25 px-4 py-3 text-center">
                 {logo}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="grid gap-6 md:grid-cols-2">
-          <article className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6">
+        <section className="reveal grid gap-6 md:grid-cols-2">
+          <article className="glass-panel card-hover p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-100/80">Problem</p>
-            <h2 className="mt-3 text-2xl font-semibold text-white md:text-3xl">Most teams have tools, not systems.</h2>
+            <h2 className="font-display mt-3 text-2xl text-white md:text-3xl">Most teams have tools, not systems.</h2>
             <p className="mt-3 text-slate-300">
               Leads go cold, content gets delayed, and operations rely on manual handoffs that don&apos;t scale.
             </p>
           </article>
-          <article className="rounded-2xl border border-cyan-200/30 bg-cyan-300/10 p-6">
+          <article className="card-hover rounded-2xl border border-cyan-200/30 bg-cyan-300/10 p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-100/90">Outcome</p>
-            <h2 className="mt-3 text-2xl font-semibold text-white md:text-3xl">A reliable growth engine.</h2>
+            <h2 className="font-display mt-3 text-2xl text-white md:text-3xl">A reliable growth engine.</h2>
             <p className="mt-3 text-slate-100/90">
               Your workflows run with consistency, your team moves faster, and every system supports revenue goals.
             </p>
           </article>
         </section>
 
-        <section>
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Who this is for</h2>
+        <section className="reveal">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Who this is for</h2>
           <ul className="mt-6 grid gap-3">
-            {icpItems.map((item) => (
-              <li key={item} className="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-slate-200">
+            {icpItems.map((item, index) => (
+              <li key={item} className="reveal card-hover rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-slate-200" style={{ transitionDelay: `${index * 80}ms` }}>
                 {item}
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="capabilities" className="space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Capabilities</h2>
+        <section id="capabilities" className="reveal space-y-8">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Capabilities</h2>
           <div className="grid gap-4 md:grid-cols-3">
-            {capabilities.map((capability) => (
+            {capabilities.map((capability, index) => (
               <article
                 key={capability.title}
-                className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/40"
+                className="reveal card-hover rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6"
+                style={{ transitionDelay: `${index * 85}ms` }}
               >
-                <h3 className="text-lg font-semibold text-white">{capability.title}</h3>
+                <h3 className="font-display text-xl text-white">{capability.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{capability.description}</p>
                 <p className="mt-4 text-sm text-cyan-100/90">{capability.useCase}</p>
               </article>
@@ -235,26 +250,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="systems" className="space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Example systems</h2>
+        <section id="systems" className="reveal space-y-8">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Example systems</h2>
           <div className="grid gap-4 md:grid-cols-2">
-            {exampleSystems.map((system) => (
-              <article key={system.title} className="rounded-2xl border border-white/10 bg-black/20 p-6 transition hover:border-cyan-300/40">
-                <h3 className="text-xl font-semibold text-white">{system.title}</h3>
+            {exampleSystems.map((system, index) => (
+              <article
+                key={system.title}
+                className="reveal card-hover rounded-2xl border border-white/10 bg-black/25 p-6"
+                style={{ transitionDelay: `${index * 90}ms` }}
+              >
+                <h3 className="font-display text-2xl text-white">{system.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{system.description}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="grid gap-10 rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="reveal grid gap-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Process</h2>
+            <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Process</h2>
             <p className="mt-4 max-w-md text-slate-300">Clear scope. Fast delivery. No black-box agency process.</p>
           </div>
           <div className="grid gap-4">
-            {processSteps.map((step) => (
-              <article key={step.step} className="rounded-2xl border border-white/10 bg-black/20 p-5 transition hover:border-cyan-300/40">
+            {processSteps.map((step, index) => (
+              <article
+                key={step.step}
+                className="reveal card-hover rounded-2xl border border-white/10 bg-black/20 p-5"
+                style={{ transitionDelay: `${index * 90}ms` }}
+              >
                 <div className="flex items-center gap-3">
                   <span className="rounded-full border border-cyan-300/40 px-3 py-1 text-xs tracking-[0.2em] text-cyan-100">
                     {step.step}
@@ -267,12 +290,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Selected work</h2>
+        <section className="reveal space-y-8">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Selected work</h2>
           <div className="grid gap-4 md:grid-cols-3">
-            {proofItems.map((item) => (
-              <article key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <p className="text-4xl font-semibold text-white">{item.metric}</p>
+            {proofItems.map((item, index) => (
+              <article
+                key={item.label}
+                className="reveal card-hover rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <p className="font-display text-5xl text-white">{item.metric}</p>
                 <p className="mt-2 text-slate-200">{item.label}</p>
                 <p className="mt-2 text-sm text-slate-400">{item.detail}</p>
               </article>
@@ -280,12 +307,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Packages</h2>
+        <section className="reveal space-y-8">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Packages</h2>
           <div className="grid gap-4 md:grid-cols-3">
-            {packages.map((pkg) => (
-              <article key={pkg.name} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6">
-                <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
+            {packages.map((pkg, index) => (
+              <article
+                key={pkg.name}
+                className="reveal card-hover rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6"
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <h3 className="font-display text-2xl text-white">{pkg.name}</h3>
                 <p className="mt-2 text-cyan-100">{pkg.price}</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{pkg.description}</p>
               </article>
@@ -293,37 +324,46 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="reveal grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Principles</h2>
+            <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">Principles</h2>
             <p className="mt-4 max-w-xl text-slate-300">
-              Every system is designed for trust, controllability, and business relevance—not flashy automation for its own sake.
+              Every system is designed for trust, controllability, and business relevance—not flashy automation for
+              its own sake.
             </p>
           </div>
           <ul className="grid gap-3">
-            {principles.map((principle) => (
-              <li key={principle} className="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-slate-200">
+            {principles.map((principle, index) => (
+              <li
+                key={principle}
+                className="reveal card-hover rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 text-slate-200"
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
                 {principle}
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">FAQ</h2>
+        <section className="reveal space-y-6">
+          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">FAQ</h2>
           <div className="grid gap-4">
-            {faqs.map((faq) => (
-              <article key={faq.q} className="rounded-2xl border border-white/10 bg-black/20 p-6">
-                <h3 className="text-lg font-semibold text-white">{faq.q}</h3>
+            {faqs.map((faq, index) => (
+              <article
+                key={faq.q}
+                className="reveal card-hover rounded-2xl border border-white/10 bg-black/25 p-6"
+                style={{ transitionDelay: `${index * 70}ms` }}
+              >
+                <h3 className="font-display text-2xl text-white">{faq.q}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{faq.a}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="relative overflow-hidden rounded-3xl border border-cyan-200/30 bg-gradient-to-br from-cyan-300/20 via-sky-300/10 to-blue-400/20 p-8 md:p-10">
+        <section className="reveal relative overflow-hidden rounded-3xl border border-cyan-200/30 bg-gradient-to-br from-cyan-300/20 via-sky-300/10 to-blue-400/20 p-8 md:p-10">
           <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-cyan-200/30 blur-3xl" />
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="font-display max-w-2xl text-4xl tracking-tight text-white md:text-5xl">
             Ready to install your AI growth infrastructure?
           </h2>
           <p className="mt-4 max-w-2xl text-slate-100/85">
@@ -339,7 +379,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <footer className="reveal flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} ProFlowLabsAI</p>
           <p>AI automation systems for sales, marketing, and operations.</p>
         </footer>
