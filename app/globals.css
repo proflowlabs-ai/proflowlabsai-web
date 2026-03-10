@@ -3,8 +3,25 @@
 :root {
   --background: #06080f;
   --foreground: #eff5ff;
+  --text-primary: #f5f8ff;
+  --text-secondary: #dce7f8;
+  --text-muted: #b8c6de;
+  --text-soft: #92a5c2;
+  --accent-soft: #b9f2ff;
+  --accent-strong: #d4fbff;
   --font-display: var(--font-syne);
   --font-body: var(--font-manrope);
+}
+
+html[data-theme="light"] {
+  --background: #edf3ff;
+  --foreground: #0f1a2d;
+  --text-primary: #14233a;
+  --text-secondary: #223758;
+  --text-muted: #365171;
+  --text-soft: #567091;
+  --accent-soft: #20538f;
+  --accent-strong: #0f4f8f;
 }
 
 @theme inline {
@@ -20,8 +37,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% -10%, #1f335e 0%, transparent 42%),
-    radial-gradient(circle at 90% 0%, #19485b 0%, transparent 36%), var(--background);
+  background: radial-gradient(circle at 20% -10%, color-mix(in srgb, var(--accent-soft) 24%, transparent) 0%, transparent 42%),
+    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--accent-strong) 20%, transparent) 0%, transparent 36%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-body), "Segoe UI", system-ui, sans-serif;
 }
@@ -159,6 +177,136 @@ body {
   background: rgba(121, 212, 255, 0.14);
 }
 
+.theme-toggle {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(145, 243, 255, 0.42);
+  background: rgba(115, 198, 255, 0.14);
+  color: var(--foreground);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(145, 243, 255, 0.78);
+  background: rgba(121, 212, 255, 0.2);
+}
+
+.trust-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.trust-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  animation: marqueeScroll 24s linear infinite;
+}
+
+.trust-marquee-wrapper:hover .trust-marquee-track {
+  animation-play-state: paused;
+}
+
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.58rem 1rem;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: none;
+}
+
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: -14px;
+  left: -14px;
+  z-index: 80;
+  height: 28px;
+  width: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(150, 238, 255, 0.6);
+  background: radial-gradient(circle at 35% 35%, rgba(205, 246, 255, 0.75), rgba(52, 148, 240, 0.28));
+  box-shadow: 0 0 24px rgba(88, 195, 255, 0.35);
+}
+
+.custom-cursor-dot {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  height: 6px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(240, 252, 255, 0.96);
+  transform: translate(-50%, -50%);
+}
+
+.scroll-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  height: 3.1rem;
+  width: 3.1rem;
+  border: 1px solid rgba(145, 243, 255, 0.46);
+  border-radius: 999px;
+  background: rgba(9, 20, 44, 0.65);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+  transform: translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-progress {
+  position: absolute;
+  inset: 0;
+}
+
+.scroll-track,
+.scroll-indicator {
+  fill: none;
+  stroke-width: 3;
+}
+
+.scroll-track {
+  stroke: rgba(171, 194, 221, 0.25);
+}
+
+.scroll-indicator {
+  stroke: rgba(152, 244, 255, 0.95);
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+.scroll-arrow {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -167,6 +315,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -192,15 +349,26 @@ body {
   .card-hover,
   .pill-button,
   .primary-button,
-  .secondary-button {
+  .secondary-button,
+  .theme-toggle,
+  .scroll-top {
     transition: none;
   }
 
   .card-hover:hover,
   .pill-button:hover,
   .primary-button:hover,
-  .secondary-button:hover {
+  .secondary-button:hover,
+  .theme-toggle:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  .trust-marquee-track {
+    animation: none;
+  }
+
+  .custom-cursor {
+    display: none;
   }
 }
