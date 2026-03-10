@@ -9,19 +9,27 @@
   --text-soft: #92a5c2;
   --accent-soft: #b9f2ff;
   --accent-strong: #d4fbff;
+  --surface-1: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --surface-border: rgba(255, 255, 255, 0.1);
+  --surface-shadow: 0 22px 52px rgba(6, 14, 36, 0.36);
   --font-display: var(--font-syne);
   --font-body: var(--font-manrope);
 }
 
 html[data-theme="light"] {
-  --background: #edf3ff;
-  --foreground: #0f1a2d;
-  --text-primary: #14233a;
-  --text-secondary: #223758;
-  --text-muted: #365171;
-  --text-soft: #567091;
-  --accent-soft: #20538f;
-  --accent-strong: #0f4f8f;
+  --background: #f3f6fd;
+  --foreground: #13233a;
+  --text-primary: #162740;
+  --text-secondary: #2a3f5f;
+  --text-muted: #48617f;
+  --text-soft: #667d9a;
+  --accent-soft: #21538d;
+  --accent-strong: #0f4d88;
+  --surface-1: rgba(255, 255, 255, 0.82);
+  --surface-2: rgba(255, 255, 255, 0.94);
+  --surface-border: rgba(27, 54, 90, 0.1);
+  --surface-shadow: 0 16px 40px rgba(46, 75, 118, 0.12);
 }
 
 @theme inline {
@@ -87,6 +95,19 @@ body {
   backdrop-filter: blur(12px);
 }
 
+.surface-card {
+  border-radius: 1rem;
+  border: 1px solid var(--surface-border);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: var(--surface-shadow);
+}
+
+.surface-card-soft {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--surface-border) 92%, transparent);
+  background: var(--surface-1);
+}
+
 .card-hover {
   transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), border-color 260ms ease, background-color 260ms ease,
     box-shadow 360ms ease;
@@ -96,6 +117,11 @@ body {
   transform: translateY(-5px);
   border-color: rgba(145, 243, 255, 0.56);
   box-shadow: 0 24px 56px rgba(10, 22, 56, 0.45);
+}
+
+html[data-theme="light"] .card-hover:hover {
+  border-color: rgba(70, 112, 168, 0.28);
+  box-shadow: 0 20px 46px rgba(52, 82, 126, 0.16);
 }
 
 .hero-item {
@@ -225,6 +251,21 @@ body {
   font-size: 0.86rem;
   color: var(--text-secondary);
   white-space: nowrap;
+}
+
+html[data-theme="light"] .aurora {
+  opacity: 0.34;
+  filter: blur(82px);
+}
+
+html[data-theme="light"] .grain {
+  opacity: 0.08;
+  mix-blend-mode: normal;
+}
+
+html[data-theme="light"] .trust-pill {
+  border-color: rgba(44, 78, 121, 0.12);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .has-custom-cursor,

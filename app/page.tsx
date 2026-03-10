@@ -194,7 +194,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-item glass-panel card-hover p-6">
+          <div className="hero-item surface-card card-hover p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-soft)]">Typical outcomes</p>
             <div className="mt-5 space-y-4">
               <div>
@@ -213,7 +213,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="reveal trust-marquee-wrapper rounded-2xl border border-white/10 bg-white/[0.02] p-6" aria-label="Trusted industries">
+        <section className="reveal trust-marquee-wrapper surface-card-soft p-6" aria-label="Trusted industries">
           <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-soft)]">Trusted by teams in</p>
           <p className="sr-only">SaaS, Ecommerce, B2B Services, Education, Healthcare, Finance.</p>
           <div className="trust-marquee mt-4" role="region" aria-live="off">
@@ -228,14 +228,14 @@ export default function Home() {
         </section>
 
         <section className="reveal grid gap-6 md:grid-cols-2">
-          <article className="glass-panel card-hover p-6">
+          <article className="surface-card card-hover p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-soft)]">Problem</p>
             <h2 className="font-display mt-3 text-2xl text-[var(--text-primary)] md:text-3xl">Most teams have tools, not systems.</h2>
             <p className="mt-3 text-[var(--text-muted)]">
               Leads go cold, content gets delayed, and operations rely on manual handoffs that don&apos;t scale.
             </p>
           </article>
-          <article className="card-hover rounded-2xl border border-cyan-200/30 bg-cyan-300/10 p-6">
+          <article className="surface-card card-hover p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-strong)]">Outcome</p>
             <h2 className="font-display mt-3 text-2xl text-[var(--text-primary)] md:text-3xl">A reliable growth engine.</h2>
             <p className="mt-3 text-[var(--text-secondary)]">
@@ -248,7 +248,7 @@ export default function Home() {
           <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">Who this is for</h2>
           <ul className="mt-6 grid gap-3">
             {icpItems.map((item, index) => (
-              <li key={item} className="reveal card-hover rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-[var(--text-secondary)]" style={{ transitionDelay: `${index * 80}ms` }}>
+              <li key={item} className="reveal surface-card-soft card-hover rounded-xl px-5 py-4 text-[var(--text-secondary)]" style={{ transitionDelay: `${index * 80}ms` }}>
                 {item}
               </li>
             ))}
@@ -261,7 +261,7 @@ export default function Home() {
             {capabilities.map((capability, index) => (
               <article
                 key={capability.title}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6"
+                className="reveal surface-card card-hover p-6"
                 style={{ transitionDelay: `${index * 85}ms` }}
               >
                 <h3 className="font-display text-xl text-[var(--text-primary)]">{capability.title}</h3>
@@ -278,7 +278,7 @@ export default function Home() {
             {exampleSystems.map((system, index) => (
               <article
                 key={system.title}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-black/25 p-6"
+                className="reveal surface-card card-hover p-6"
                 style={{ transitionDelay: `${index * 90}ms` }}
               >
                 <h3 className="font-display text-2xl text-[var(--text-primary)]">{system.title}</h3>
@@ -288,7 +288,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="reveal grid gap-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="reveal surface-card-soft grid gap-10 rounded-3xl p-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">Process</h2>
             <p className="mt-4 max-w-md text-[var(--text-muted)]">Clear scope. Fast delivery. No black-box agency process.</p>
@@ -297,7 +297,7 @@ export default function Home() {
             {processSteps.map((step, index) => (
               <article
                 key={step.step}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-black/20 p-5"
+                className="reveal surface-card card-hover p-5"
                 style={{ transitionDelay: `${index * 90}ms` }}
               >
                 <div className="flex items-center gap-3">
@@ -322,7 +322,7 @@ export default function Home() {
             {proofItems.map((item, index) => (
               <article
                 key={item.label}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                className="reveal surface-card card-hover p-6"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <p className="font-display text-5xl text-[var(--text-primary)]">{item.metric}</p>
@@ -339,7 +339,7 @@ export default function Home() {
             {packages.map((pkg, index) => (
               <article
                 key={pkg.name}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6"
+                className="reveal surface-card card-hover p-6"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <h3 className="font-display text-2xl text-[var(--text-primary)]">{pkg.name}</h3>
@@ -362,7 +362,7 @@ export default function Home() {
             {principles.map((principle, index) => (
               <li
                 key={principle}
-                className="reveal card-hover rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 text-[var(--text-secondary)]"
+                className="reveal surface-card-soft card-hover rounded-xl px-5 py-4 text-[var(--text-secondary)]"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {principle}
@@ -377,7 +377,7 @@ export default function Home() {
             {faqs.map((faq, index) => (
               <article
                 key={faq.q}
-                className="reveal card-hover rounded-2xl border border-white/10 bg-black/25 p-6"
+                className="reveal surface-card card-hover p-6"
                 style={{ transitionDelay: `${index * 70}ms` }}
               >
                 <h3 className="font-display text-2xl text-[var(--text-primary)]">{faq.q}</h3>
