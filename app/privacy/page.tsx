@@ -1,103 +1,85 @@
+import { Metadata } from 'next'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | ProFlowLabs AI',
+  robots: { index: false, follow: true },
+}
+
 export default function PrivacyPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
-      <div className="aurora" />
-      <div className="grain" />
-      <div className="pointer-events-none absolute inset-0 tech-grid opacity-60" />
+    <>
+      <h1>Privacy Policy</h1>
+      <p className="text-sm text-muted-foreground">Last updated August 23, 2025</p>
 
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 pb-16 pt-10 md:px-10 md:pt-14">
-        <header className="flex items-center justify-between border-b border-white/12 pb-5">
-          <a href="/" className="font-body text-sm tracking-[0.24em] text-slate-300 transition hover:text-white">
-            PROFLOWLABSAI
-          </a>
-          <a href="mailto:hello@proflowlabsai.com" className="pill-button text-xs text-slate-100">
-            Contact
-          </a>
-        </header>
+      <p>
+        This Privacy Notice for <strong>HR Online Consulting LLC</strong> (doing business as <strong>ProFlowLabs AI</strong>) (&quot;<strong>we</strong>,&quot; &quot;<strong>us</strong>,&quot; or &quot;<strong>our</strong>&quot;), describes how and why we might access, collect, store, use, and/or share (&quot;process&quot;) your personal information when you use our services (&quot;Services&quot;).
+      </p>
 
-        <section className="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-7 md:p-8">
-          <h1 className="font-display text-4xl tracking-tight text-white md:text-5xl">Privacy Policy</h1>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Last updated: [DD.MM.YYYY]. This is a short, editable template and not legal advice. Replace placeholders
-            with your real details.
-          </p>
+      <ul>
+        <li>Visit our website at <Link href="https://proflowlabs.ai" className="text-primary hover:underline">https://proflowlabs.ai</Link></li>
+        <li>Use the ProFlowLabs AI clinical documentation platform</li>
+        <li>Engage with us in other related ways, including any sales, marketing, or events</li>
+      </ul>
 
-          <div className="mt-8 space-y-6 text-sm leading-relaxed text-slate-200">
-            <section>
-              <h2 className="font-display text-xl text-white">1) Who is responsible?</h2>
-              <p className="mt-2">[Company / Legal Name], [Address], [Country]</p>
-              <p>Contact: [privacy@yourdomain.com]</p>
-            </section>
+      <p>
+        <strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <strong>legal@proflowlabs.ai</strong>.
+      </p>
 
-            <section>
-              <h2 className="font-display text-xl text-white">2) What data we process</h2>
-              <p className="mt-2">
-                We process data you provide directly (e.g., name, email, message content) and technical data generated
-                when you visit this website (e.g., IP address, browser type, device information, pages visited).
-              </p>
-            </section>
+      <hr />
 
-            <section>
-              <h2 className="font-display text-xl text-white">3) Why we process data</h2>
-              <p className="mt-2">
-                We use your data to run the website, respond to inquiries, improve performance, and maintain security.
-                We only process data where we have a valid legal basis (consent, contract, legal obligation, or
-                legitimate interest).
-              </p>
-            </section>
+      <h2>Summary of Key Points</h2>
+      <ul>
+        <li><strong>What personal information do we process?</strong> We may process personal information depending on how you interact with us and the Services.</li>
+        <li><strong>Special categories of data?</strong> We process special categories of data (health data) only under a signed <Link href="/legal/dpa" className="text-primary hover:underline">Data Processing Agreement (DPA)</Link>.</li>
+        <li><strong>How do we process your information?</strong> To provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</li>
+        <li><strong>Do we share your personal information?</strong> Yes, with authorized <Link href="/legal/subprocessors" className="text-primary hover:underline">Subprocessors</Link>.</li>
+        <li><strong>How do we keep your data safe?</strong> We have organizational and technical safeguards (TOMs).</li>
+      </ul>
 
-            <section>
-              <h2 className="font-display text-xl text-white">4) Cookies</h2>
-              <p className="mt-2">
-                This site may use essential cookies for core functionality and optional cookies for analytics. You can
-                control or disable cookies in your browser settings.
-              </p>
-            </section>
+      <hr />
 
-            <section>
-              <h2 className="font-display text-xl text-white">5) Analytics</h2>
-              <p className="mt-2">
-                If analytics tools are enabled (for example: [Plausible / Google Analytics / other]), they help us
-                understand traffic and improve content. Configure your provider list and consent behavior as required
-                in your region.
-              </p>
-            </section>
+      <h2>1. What information do we collect?</h2>
+      <p>We collect personal information you provide directly when registering, expressing interest, using features, or contacting us.</p>
+      <ul>
+        <li>Names, emails, phone numbers, usernames, passwords</li>
+        <li>Billing addresses, debit/credit card numbers</li>
+        <li>Job titles, authentication data, contact preferences</li>
+      </ul>
 
-            <section>
-              <h2 className="font-display text-xl text-white">6) Retention</h2>
-              <p className="mt-2">
-                We keep personal data only as long as needed for the purposes above or as required by applicable law.
-              </p>
-            </section>
+      <hr />
 
-            <section>
-              <h2 className="font-display text-xl text-white">7) Your rights</h2>
-              <p className="mt-2">
-                Depending on your location, you may have rights to access, correct, delete, or restrict processing of
-                your personal data, and to object to certain uses.
-              </p>
-            </section>
+      <h2>2. How do we process your information?</h2>
+      <ul>
+        <li>Facilitate account creation and authentication</li>
+        <li>Deliver and manage Services</li>
+        <li>Respond to inquiries and support requests</li>
+        <li>Monitor fraud and protect security</li>
+        <li>Verify professional credentials and eligibility</li>
+        <li>Ensure compliance with HIPAA, GDPR, via executed agreements</li>
+      </ul>
 
-            <section>
-              <h2 className="font-display text-xl text-white">8) Contact</h2>
-              <p className="mt-2">
-                For privacy requests, email us at <a className="text-cyan-100 underline underline-offset-2" href="mailto:[privacy@yourdomain.com]">[privacy@yourdomain.com]</a>.
-              </p>
-            </section>
-          </div>
-        </section>
+      <hr />
 
-        <footer className="border-t border-white/10 pt-6 text-sm text-slate-400">
-          <div className="flex flex-wrap gap-4">
-            <a href="/" className="transition hover:text-slate-200">
-              Home
-            </a>
-            <a href="/imprint" className="transition hover:text-slate-200">
-              Imprint
-            </a>
-          </div>
-        </footer>
-      </div>
-    </main>
-  );
+      <h2>3. International Data Transfers</h2>
+      <p>
+        Our primary servers are located in <strong>France (European Union)</strong>. Data may also be processed in other countries by third-party providers. We ensure appropriate safeguards (SCCs) are in place.
+      </p>
+
+      <hr />
+
+      <h2>4. Data Subject Rights</h2>
+      <p>
+        Depending on your location, you have rights to access, correct, delete, or restrict how we process your data. Contact us at <strong>legal@proflowlabs.ai</strong> to exercise your rights.
+      </p>
+
+      <hr />
+
+      <h2>5. Contact Us</h2>
+      <address className="not-italic font-medium">
+        HR Online Consulting LLC<br />
+        550 Kings Mountain, Kings Mountain, NC 28086, United States
+      </address>
+    </>
+  )
 }
