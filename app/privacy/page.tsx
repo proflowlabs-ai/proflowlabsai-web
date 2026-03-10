@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <>
+    <div className="space-y-4">
       <h1>Privacy Policy</h1>
-      <p className="text-sm text-muted-foreground">Last updated August 23, 2025</p>
+      <p>Last updated August 23, 2025</p>
 
       <p>
         This Privacy Notice for <strong>HR Online Consulting LLC</strong> (doing business as <strong>ProFlowLabs AI</strong>) (&quot;<strong>we</strong>,&quot; &quot;<strong>us</strong>,&quot; or &quot;<strong>our</strong>&quot;), describes how and why we might access, collect, store, use, and/or share (&quot;process&quot;) your personal information when you use our services (&quot;Services&quot;).
       </p>
 
       <ul>
-        <li>Visit our website at <Link href="https://proflowlabsai.com" className="text-primary hover:underline">https://proflowlabsai.com</Link></li>
+        <li>Visit our website at <Link href="https://proflowlabsai.com" className="underline">https://proflowlabsai.com</Link></li>
         <li>Use the ProFlowLabs AI clinical documentation platform</li>
         <li>Engage with us in other related ways, including any sales, marketing, or events</li>
       </ul>
@@ -31,9 +31,9 @@ export default function PrivacyPage() {
       <h2>Summary of Key Points</h2>
       <ul>
         <li><strong>What personal information do we process?</strong> We may process personal information depending on how you interact with us and the Services.</li>
-        <li><strong>Special categories of data?</strong> We process special categories of data (health data) only under a signed <Link href="/legal/dpa" className="text-primary hover:underline">Data Processing Agreement (DPA)</Link>.</li>
+        <li><strong>Special categories of data?</strong> We process special categories of data (health data) only under a signed <Link href="/legal/dpa" className="underline">Data Processing Agreement (DPA)</Link>.</li>
         <li><strong>How do we process your information?</strong> To provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</li>
-        <li><strong>Do we share your personal information?</strong> Yes, with authorized <Link href="/legal/subprocessors" className="text-primary hover:underline">Subprocessors</Link>.</li>
+        <li><strong>Do we share your personal information?</strong> Yes, with authorized <Link href="/legal/subprocessors" className="underline">Subprocessors</Link>.</li>
         <li><strong>How do we keep your data safe?</strong> We have organizational and technical safeguards (TOMs).</li>
       </ul>
 
@@ -76,10 +76,10 @@ export default function PrivacyPage() {
       <hr />
 
       <h2>5. Contact Us</h2>
-      <address className="not-italic font-medium">
+      <address>
         HR Online Consulting LLC<br />
         550 Kings Mountain, Kings Mountain, NC 28086, United States
       </address>
-    </>
+    </div>
   )
 }
