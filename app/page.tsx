@@ -145,7 +145,6 @@ export default function Home() {
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -157,7 +156,6 @@ export default function Home() {
       },
       { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
     );
-
     elements.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
@@ -165,97 +163,109 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
       <CustomCursor />
-      <div className="aurora" />
+      <div className="mesh-bg" />
       <div className="grain" />
-      <div className="pointer-events-none absolute inset-0 tech-grid opacity-60" />
+      <div className="pointer-events-none absolute inset-0 tech-grid" />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-24 px-6 pb-16 pt-10 md:px-10 md:pt-14">
-
-        {/* ── Header ──────────────────────────────────────── */}
-        <header className="hero-item flex items-center justify-between border-b border-white/10 pb-5">
-          <div className="font-body text-sm tracking-[0.24em] text-[var(--text-muted)]">PROFLOWLABSAI</div>
-          <div className="flex items-center gap-3">
+      {/* ── Floating Nav ────────────────────────────────── */}
+      <div className="sticky top-3 z-50 flex justify-center px-4 pt-4">
+        <nav className="hero-item floating-nav flex items-center gap-4 px-5 py-2.5 md:gap-5 md:px-6">
+          <span className="font-display text-sm font-bold tracking-[0.18em] text-[var(--text-soft)]">
+            PROFLOWLABSAI
+          </span>
+          <div className="hidden h-4 w-px bg-white/10 md:block" />
+          <div className="flex items-center gap-2.5">
             <ThemeToggle />
-            <a href="mailto:hello@proflowlabsai.com" className="pill-button text-xs">
+            <a href="mailto:hello@proflowlabsai.com" className="cta-button-sm">
               Book a call
             </a>
           </div>
-        </header>
+        </nav>
+      </div>
 
-        {/* ── Hero ────────────────────────────────────────── */}
-        <section className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-10">
-          <div className="space-y-8">
-            <span className="hero-item inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-[var(--accent-strong)]">
-              AI Automation Agency
-            </span>
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-28 px-6 pb-20 pt-16 md:px-10 md:pt-20">
 
-            <h1
-              className="hero-item font-display text-balance leading-[0.92] tracking-[-0.04em] text-[var(--text-primary)]"
-              style={{ fontSize: "clamp(3.2rem, 7.5vw, 6.4rem)" }}
-            >
-              AI Systems That
-              <br />
-              <span className="text-gradient">Compound Revenue.</span>
-            </h1>
+        {/* ── Hero ──────────────────────────────────────── */}
+        <section className="relative">
+          <div className="orb orb-violet" />
+          <div className="orb orb-amber" />
 
-            <p className="hero-item max-w-xl text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-              For B2B founders and operators, we design and deploy practical automation workflows across outreach,
-              content, and operations—so execution gets faster and revenue becomes more predictable.
-            </p>
+          <div className="relative grid gap-14 lg:grid-cols-[1.3fr_0.7fr] lg:items-start lg:gap-12">
+            <div className="space-y-8">
+              <span className="hero-item inline-flex rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                AI Automation Agency
+              </span>
 
-            <div className="hero-item flex flex-wrap gap-4">
-              <a href="mailto:hello@proflowlabsai.com" className="primary-button">
-                Book strategy call
-              </a>
-              <a href="#systems" className="secondary-button">
-                See example systems
-              </a>
+              <h1
+                className="hero-item font-display text-balance font-extrabold leading-[0.88] tracking-[-0.045em] text-[var(--text-primary)]"
+                style={{ fontSize: "clamp(3.2rem, 9vw, 7rem)" }}
+              >
+                AI Systems That
+                <br />
+                <span className="text-gradient">Compound Revenue.</span>
+              </h1>
+
+              <p className="hero-item max-w-lg text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
+                We design and deploy practical automation workflows across outreach, content, and
+                operations—so your execution gets faster and revenue becomes predictable.
+              </p>
+
+              <div className="hero-item flex flex-wrap gap-4">
+                <a href="mailto:hello@proflowlabsai.com" className="cta-button">
+                  Book strategy call
+                </a>
+                <a href="#systems" className="ghost-button">
+                  See example systems
+                </a>
+              </div>
+
+              <div className="hero-item flex flex-wrap gap-7 border-t border-[var(--surface-border)] pt-6">
+                <div className="inline-stat">
+                  <span className="inline-stat-value">2–4 wks</span>
+                  <span className="inline-stat-label">to first live system</span>
+                </div>
+                <div className="inline-stat">
+                  <span className="inline-stat-value">3</span>
+                  <span className="inline-stat-label">automation types</span>
+                </div>
+                <div className="inline-stat">
+                  <span className="inline-stat-value">€4k+</span>
+                  <span className="inline-stat-label">starting investment</span>
+                </div>
+              </div>
             </div>
 
-            <div className="hero-item flex flex-wrap gap-6 border-t border-white/8 pt-6">
-              <div className="inline-stat">
-                <span className="inline-stat-value">2–4 wks</span>
-                <span className="inline-stat-label">to first live system</span>
-              </div>
-              <div className="inline-stat">
-                <span className="inline-stat-value">3</span>
-                <span className="inline-stat-label">automation types</span>
-              </div>
-              <div className="inline-stat">
-                <span className="inline-stat-value">€4k+</span>
-                <span className="inline-stat-label">starting investment</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero-item surface-card card-hover p-7">
-            <p className="section-label">Typical outcomes</p>
-            <div className="mt-3 space-y-5">
-              <div className="border-b border-white/6 pb-5">
-                <p className="font-display text-2xl text-[var(--text-primary)]">More meetings</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
-                  Better targeting + faster outreach loops.
-                </p>
-              </div>
-              <div className="border-b border-white/6 pb-5">
-                <p className="font-display text-2xl text-[var(--text-primary)]">Faster execution</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
-                  Systems replacing repetitive tasks across teams.
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-2xl text-[var(--text-primary)]">Clear visibility</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
-                  Automations tied to measurable business outcomes.
-                </p>
+            <div className="hero-item glass-card glass-card-hover p-7">
+              <p className="section-label">Typical outcomes</p>
+              <div className="mt-3 space-y-5">
+                <div className="border-b border-[var(--surface-border)] pb-5">
+                  <p className="font-display text-2xl font-bold text-[var(--text-primary)]">More meetings</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
+                    Better targeting + faster outreach loops.
+                  </p>
+                </div>
+                <div className="border-b border-[var(--surface-border)] pb-5">
+                  <p className="font-display text-2xl font-bold text-[var(--text-primary)]">Faster execution</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
+                    Systems replacing repetitive tasks across teams.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-bold text-[var(--text-primary)]">Clear visibility</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
+                    Automations tied to measurable business outcomes.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── Trust Marquee ────────────────────────────────── */}
-        <section className="reveal trust-marquee-wrapper surface-card-soft p-5" aria-label="Trusted industries">
-          <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-soft)]">Built for teams across</p>
+        {/* ── Trust ─────────────────────────────────────── */}
+        <section className="reveal trust-marquee-wrapper glass-card p-5" aria-label="Trusted industries">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-soft)]">
+            Built for teams across
+          </p>
           <p className="sr-only">SaaS, Ecommerce, B2B Services, Education, Healthcare, Finance.</p>
           <div className="trust-marquee mt-4" role="region" aria-live="off">
             <div className="trust-marquee-track">
@@ -268,11 +278,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Problem / Solution ───────────────────────────── */}
-        <section className="reveal grid gap-5 md:grid-cols-2">
-          <article className="surface-card card-hover p-7">
+        {/* ── Problem / Solution ───────────────────────── */}
+        <section className="reveal grid gap-5 md:grid-cols-[1.3fr_1fr]">
+          <article className="glass-card glass-card-hover p-8">
             <p className="section-label" style={{ color: "var(--text-soft)" }}>The Problem</p>
-            <h2 className="font-display mt-1 text-2xl text-[var(--text-primary)] md:text-3xl">
+            <h2 className="font-display mt-1 text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
               Most teams have tools, not systems.
             </h2>
             <p className="mt-4 leading-relaxed text-[var(--text-muted)]">
@@ -280,11 +290,11 @@ export default function Home() {
             </p>
           </article>
           <article
-            className="surface-card card-hover p-7"
-            style={{ borderColor: "rgba(145, 243, 255, 0.2)" }}
+            className="glass-card glass-card-hover p-8"
+            style={{ borderColor: "color-mix(in srgb, var(--accent) 30%, transparent)" }}
           >
             <p className="section-label">The Outcome</p>
-            <h2 className="font-display mt-1 text-2xl text-[var(--text-primary)] md:text-3xl">
+            <h2 className="font-display mt-1 text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
               A reliable growth engine.
             </h2>
             <p className="mt-4 leading-relaxed text-[var(--text-secondary)]">
@@ -293,20 +303,20 @@ export default function Home() {
           </article>
         </section>
 
-        {/* ── ICP ─────────────────────────────────────────── */}
+        {/* ── ICP ───────────────────────────────────────── */}
         <section className="reveal">
           <p className="section-label">Who This Is For</p>
-          <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
             Built for operators who need results.
           </h2>
-          <ul className="mt-7 grid gap-3">
+          <ul className="mt-8 grid gap-3">
             {icpItems.map((item, index) => (
               <li
                 key={item}
-                className="reveal surface-card-soft card-hover flex items-start gap-4 rounded-xl px-5 py-4"
+                className="reveal glass-card glass-card-hover flex items-start gap-4 rounded-2xl px-6 py-5"
                 style={{ transitionDelay: `${index * 75}ms` }}
               >
-                <span className="font-display mt-0.5 shrink-0 text-sm font-bold text-[var(--accent-soft)] opacity-55">
+                <span className="font-display mt-0.5 shrink-0 text-sm font-extrabold text-[var(--accent)] opacity-50">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="text-[var(--text-secondary)]">{item}</span>
@@ -315,30 +325,34 @@ export default function Home() {
           </ul>
         </section>
 
-        {/* ── Capabilities ────────────────────────────────── */}
+        {/* ── Capabilities ──────────────────────────────── */}
         <section id="capabilities" className="reveal space-y-8">
           <div>
             <p className="section-label">Capabilities</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               What we build for you.
             </h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {capabilities.map((capability, index) => (
               <article
                 key={capability.title}
-                className="reveal surface-card card-hover relative overflow-hidden p-6"
+                className="reveal glass-card glass-card-hover relative overflow-hidden p-7"
                 style={{ transitionDelay: `${index * 85}ms` }}
               >
-                <span className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7rem] font-black leading-none text-[var(--text-primary)] opacity-[0.04]">
+                <span className="pointer-events-none absolute -right-3 -top-5 select-none font-display text-[8rem] font-black leading-none text-[var(--accent)] opacity-[0.04]">
                   {capability.index}
                 </span>
-                <span className="font-display text-sm font-bold text-[var(--accent-soft)] opacity-65">
+                <span className="font-display text-sm font-extrabold text-[var(--accent)] opacity-60">
                   {capability.index}
                 </span>
-                <h3 className="font-display mt-3 text-xl text-[var(--text-primary)]">{capability.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">{capability.description}</p>
-                <p className="mt-4 border-t border-white/6 pt-4 text-xs leading-relaxed text-[var(--accent-strong)]">
+                <h3 className="font-display mt-3 text-xl font-bold text-[var(--text-primary)]">
+                  {capability.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
+                  {capability.description}
+                </p>
+                <p className="mt-5 border-t border-[var(--surface-border)] pt-4 text-xs leading-relaxed text-[var(--accent-hover)]">
                   {capability.useCase}
                 </p>
               </article>
@@ -346,97 +360,92 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Example Systems ──────────────────────────────── */}
+        {/* ── Example Systems (Bento) ───────────────────── */}
         <section id="systems" className="reveal space-y-8">
           <div>
             <p className="section-label">Example Systems</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Pre-architected for common bottlenecks.
             </h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="bento-grid">
             {exampleSystems.map((system, index) => (
               <article
                 key={system.title}
-                className="reveal surface-card card-hover p-6"
+                className={`reveal glass-card glass-card-hover p-7 ${index === 0 || index === 3 ? "bento-wide" : ""}`}
                 style={{ transitionDelay: `${index * 90}ms` }}
               >
-                <h3 className="font-display text-xl text-[var(--text-primary)]">{system.title}</h3>
+                <h3 className="font-display text-xl font-bold text-[var(--text-primary)]">{system.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">{system.description}</p>
               </article>
             ))}
           </div>
         </section>
 
-        {/* ── Process ─────────────────────────────────────── */}
-        <section className="reveal surface-card-soft rounded-3xl p-8 md:p-10">
-          <div className="mb-8">
+        {/* ── Process ───────────────────────────────────── */}
+        <section className="reveal space-y-8">
+          <div>
             <p className="section-label">Process</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Clear scope. Fast delivery.
             </h2>
             <p className="mt-3 max-w-md text-[var(--text-muted)]">
               No black-box agency process. You see every step.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="process-grid">
             {processSteps.map((step, index) => (
               <article
                 key={step.step}
-                className="reveal surface-card card-hover relative overflow-hidden p-6"
-                style={{ transitionDelay: `${index * 90}ms` }}
+                className="reveal glass-card glass-card-hover relative overflow-hidden p-6 pt-8"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <span className="pointer-events-none absolute -bottom-6 -right-2 select-none font-display text-[6rem] font-black leading-none text-[var(--text-primary)] opacity-[0.04]">
+                <span className="pointer-events-none absolute -bottom-5 -right-2 select-none font-display text-[7rem] font-black leading-none text-[var(--accent)] opacity-[0.035]">
                   {step.step}
                 </span>
-                <div className="relative">
-                  <span className="inline-flex rounded-full border border-cyan-300/36 px-2.5 py-0.5 text-xs tracking-[0.18em] text-[var(--accent-soft)]">
-                    {step.step}
-                  </span>
-                  <h3 className="font-display mt-4 text-lg text-[var(--text-primary)]">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">{step.description}</p>
+                <div className="relative flex flex-col gap-4">
+                  <span className="process-number">{step.step}</span>
+                  <h3 className="font-display text-lg font-bold text-[var(--text-primary)]">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-[var(--text-muted)]">{step.description}</p>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        {/* ── Proof ───────────────────────────────────────── */}
+        {/* ── Proof ─────────────────────────────────────── */}
         <section className="reveal space-y-8">
           <div>
             <p className="section-label">Selected Work</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Outcomes from past projects.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
-              Anonymized highlights. They illustrate what&apos;s possible with the right inputs—results vary by context.
+              Anonymized highlights. They illustrate what&apos;s possible—results vary by context.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {proofItems.map((item, index) => (
               <article
                 key={item.label}
-                className="reveal surface-card card-hover p-6"
+                className="reveal glass-card glass-card-hover p-7"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
-                <p
-                  className="section-label"
-                  style={{ color: "var(--text-soft)", fontSize: "0.62rem" }}
-                >
+                <p className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-[var(--text-soft)]">
                   {item.metric}
                 </p>
-                <p className="font-display mt-2 text-xl text-[var(--text-primary)]">{item.label}</p>
+                <p className="font-display mt-3 text-xl font-bold text-[var(--text-primary)]">{item.label}</p>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--text-soft)]">{item.detail}</p>
               </article>
             ))}
           </div>
         </section>
 
-        {/* ── Packages ────────────────────────────────────── */}
+        {/* ── Packages ──────────────────────────────────── */}
         <section className="reveal space-y-8">
           <div>
             <p className="section-label">Packages</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Choose your starting point.
             </h2>
           </div>
@@ -444,20 +453,21 @@ export default function Home() {
             {packages.map((pkg, index) => (
               <article
                 key={pkg.name}
-                className={`reveal card-hover flex flex-col p-6 ${pkg.featured ? "featured-card" : "surface-card"}`}
+                className={`reveal glass-card-hover flex flex-col p-7 ${pkg.featured ? "featured-card" : "glass-card"}`}
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {pkg.featured && <span className="featured-badge">Most Popular</span>}
-                <h3 className="font-display text-2xl text-[var(--text-primary)]">{pkg.name}</h3>
-                <p className="mt-2 text-lg font-medium text-[var(--accent-soft)]">{pkg.price}</p>
+                <h3 className="font-display text-2xl font-bold text-[var(--text-primary)]">{pkg.name}</h3>
+                <p className="mt-2 font-display text-lg font-bold text-[var(--accent)]">{pkg.price}</p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">{pkg.description}</p>
                 <a
                   href="mailto:hello@proflowlabsai.com"
-                  className={`mt-5 inline-flex w-full items-center justify-center rounded-xl py-2.5 text-sm font-semibold transition-all duration-200 ${
+                  className={`mt-6 inline-flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition-all duration-200 ${
                     pkg.featured
-                      ? "bg-[var(--accent-soft)] accent-btn-text hover:opacity-90"
-                      : "border border-white/14 text-[var(--text-secondary)] hover:border-white/26 hover:bg-white/4"
+                      ? "cta-button"
+                      : "ghost-button"
                   }`}
+                  style={pkg.featured ? { padding: "0.75rem 1rem" } : { padding: "0.75rem 1rem" }}
                 >
                   Get started
                 </a>
@@ -466,11 +476,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Principles ──────────────────────────────────── */}
-        <section className="reveal grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* ── Principles ────────────────────────────────── */}
+        <section className="reveal grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="section-label">Principles</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Designed for trust and control.
             </h2>
             <p className="mt-4 max-w-xl text-[var(--text-muted)]">
@@ -481,21 +491,24 @@ export default function Home() {
             {principles.map((principle, index) => (
               <li
                 key={principle}
-                className="reveal surface-card-soft card-hover flex items-center gap-3 rounded-xl px-5 py-4"
+                className="reveal glass-card glass-card-hover flex items-center gap-3 rounded-2xl px-5 py-4"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent-soft)] opacity-65" />
+                <span
+                  className="h-2 w-2 shrink-0 rounded-full"
+                  style={{ background: "linear-gradient(135deg, var(--accent), var(--cta))" }}
+                />
                 <span className="text-[var(--text-secondary)]">{principle}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        {/* ── FAQ ─────────────────────────────────────────── */}
+        {/* ── FAQ ───────────────────────────────────────── */}
         <section className="reveal space-y-6">
           <div>
             <p className="section-label">FAQ</p>
-            <h2 className="font-display text-3xl tracking-tight text-[var(--text-primary)] md:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
               Common questions.
             </h2>
           </div>
@@ -526,56 +539,54 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── CTA Section ─────────────────────────────────── */}
-        <section
-          className="reveal relative overflow-hidden rounded-3xl p-8 md:p-12"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(73, 198, 255, 0.16) 0%, rgba(74, 84, 255, 0.1) 50%, rgba(106, 248, 220, 0.13) 100%)",
-            border: "1px solid rgba(145, 243, 255, 0.26)",
-          }}
-        >
-          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-cyan-300/15 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-sky-400/10 blur-3xl" />
+        {/* ── CTA Section ───────────────────────────────── */}
+        <section className="reveal relative overflow-hidden rounded-3xl p-8 md:p-14">
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, var(--accent-dim) 0%, transparent 50%, var(--cta-dim) 100%)",
+              borderRadius: "inherit",
+            }}
+          />
+          <div
+            className="absolute inset-0 rounded-3xl"
+            style={{ border: "1px solid color-mix(in srgb, var(--accent) 25%, transparent)" }}
+          />
+          <div className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full blur-3xl" style={{ background: "var(--accent-dim)" }} />
+          <div className="pointer-events-none absolute -right-20 top-1/4 h-56 w-56 rounded-full blur-3xl" style={{ background: "var(--cta-dim)" }} />
 
           <div className="relative">
             <p className="section-label">Ready to start?</p>
             <h2
-              className="font-display max-w-2xl text-balance tracking-[-0.03em] text-[var(--text-primary)]"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+              className="font-display max-w-2xl text-balance font-extrabold tracking-[-0.03em] text-[var(--text-primary)]"
+              style={{ fontSize: "clamp(2rem, 5.5vw, 3.8rem)" }}
             >
               Install your AI growth infrastructure.
             </h2>
-            <p className="mt-4 max-w-xl text-lg text-[var(--text-secondary)]/85">
+            <p className="mt-4 max-w-xl text-lg text-[var(--text-secondary)]">
               Tell us your bottleneck and goals. We&apos;ll map the fastest path to a working automation system.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="mailto:hello@proflowlabsai.com"
-                className="inline-flex rounded-xl bg-white px-6 py-3.5 font-semibold text-slate-950 transition hover:bg-cyan-50"
-              >
+              <a href="mailto:hello@proflowlabsai.com" className="cta-button">
                 Book strategy call
               </a>
-              <a
-                href="mailto:hello@proflowlabsai.com"
-                className="inline-flex rounded-xl border border-white/34 px-6 py-3.5 font-medium text-[var(--text-primary)] transition hover:bg-white/8"
-              >
+              <a href="mailto:hello@proflowlabsai.com" className="ghost-button">
                 hello@proflowlabsai.com
               </a>
             </div>
           </div>
         </section>
 
-        {/* ── Footer ──────────────────────────────────────── */}
-        <footer className="reveal flex flex-col gap-4 border-t border-white/8 pt-8 text-sm text-[var(--text-soft)] sm:flex-row sm:items-center sm:justify-between">
+        {/* ── Footer ────────────────────────────────────── */}
+        <footer className="reveal flex flex-col gap-4 border-t border-[var(--surface-border)] pt-8 text-sm text-[var(--text-soft)] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} ProFlowLabsAI</p>
           <div className="flex flex-wrap items-center gap-4 sm:justify-end">
-            <a href="/imprint" className="transition hover:text-[var(--text-secondary)]">Imprint</a>
-            <a href="/privacy" className="transition hover:text-[var(--text-secondary)]">Privacy</a>
+            <a href="/imprint" className="transition hover:text-[var(--accent)]">Imprint</a>
+            <a href="/privacy" className="transition hover:text-[var(--accent)]">Privacy</a>
           </div>
         </footer>
-
       </div>
+
       <ScrollTopProgress />
     </main>
   );
